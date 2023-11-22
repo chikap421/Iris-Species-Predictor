@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Machine Learning Model Deployment</title>
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Responsive design */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-image: url('https://hips.hearstapps.com/hmg-prod/images/vibrant-pink-and-white-summer-flowering-cosmos-royalty-free-image-1653499726.jpg?crop=0.66541xw:1xh;center,top&resize=980:*');
+      background-size: cover;
+      background-attachment: fixed;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Card styling */
+    .card {
+      background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    /* Interactive elements */
+    input[type=text],
+    button {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: border-color 0.3s;
+    }
+
+    input[type=text]:focus,
+    button:focus {
+      border-color: #7a9cc6;
+    }
+
+    input[type=text]:hover,
+    button:hover {
+      border-color: #5a7f99;
+    }
+
+    /* Button styling */
+    button {
+      background-color: #4caf50;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* Prediction display */
+    .prediction {
+      padding: 1rem;
+      background-color: #dff0d8;
+      color: #3c763d;
+      border-radius: 5px;
+      border: 1px solid #d6e9c6;
+    }
+
+    /* Accessibility */
+    .accessible-focus {
+      outline: 3px solid #ffbf47;
+      outline-offset: 3px;
+    }
+
+    /* Using media queries for responsive adjustments */
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      .card {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Predict Iris Species</h1>
+    <form action="{{ url_for('predict')}}" method="post">
+      <input type="text" name="sepal_length" placeholder="Sepal Length (cm)" required="required" class="accessible-focus" />
+      <input type="text" name="sepal_width" placeholder="Sepal Width (cm)" required="required" class="accessible-focus" />
+      <input type="text" name="petal_length" placeholder="Petal Length (cm)" required="required" class="accessible-focus" />
+      <input type="text" name="petal_width" placeholder="Petal Width (cm)" required="required" class="accessible-focus" />
+      <button type="submit" class="accessible-focus">Predict</button>
+    </form>
+    {% if prediction_text %}
+      <div class="prediction accessible-focus">
+        {{ prediction_text }}
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
