@@ -4,7 +4,7 @@ from sklearn.linear_model import LogisticRegression
 import pickle
 
 # Reading the data
-iris = pd.read_csv("/Users/chikamaduabuchi/Downloads/8836201-6f9306ad21398ea43cba4f7d537619d0e07d5ae3/iris.csv")
+iris = pd.read_csv("/iris.csv")
 print(iris.head())
 
 
